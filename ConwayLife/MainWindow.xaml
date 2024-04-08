@@ -1,0 +1,33 @@
+﻿<Window x:Class="ConwayLife.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ConwayLife"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        xmlns:controls="clr-namespace:ConwayLife.Controls"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800" Background="Blue">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="32px"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Viewbox Width="auto">
+            <Viewbox.Height>
+                <Binding Path="Width" Converter="{StaticResource PerchentageConverter}">
+                    <Binding.ConverterParameter>
+                        <sys:Int32>75</sys:Int32>
+                    </Binding.ConverterParameter>
+                </Binding>
+            </Viewbox.Height>
+            <controls:GameGrid x:Name="game_grid"></controls:GameGrid>
+        </Viewbox>
+        <StackPanel Background="Red" Grid.Row="1" Orientation="Horizontal">
+            <Button Content="Tick" Width="64px" Click="DoTick" Name="SingleTickButton"></Button>
+            <Button Content="AutoTick On/Off" Width="96px" Click="AutoTickOnOff"></Button>
+            <Button Content="Griglia On/Off" Width="96px" Click="GridChangeOnOff"></Button>
+            <Button Content="Pulisci Griglia" Width="96px" Click="ClearGrid"></Button>
+        </StackPanel>
+    </Grid>
+</Window>
